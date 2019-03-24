@@ -1,0 +1,40 @@
+package controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import VO.EquipmentVO;
+import VO.PlayerVO;
+import VO.SkillVO;
+
+public interface PlayerController {
+	//使用技能，其中能够结束玩家回合的技能也在其中；
+	public boolean chooseSkill(String skillName, String... targetname);
+
+	//获取玩家对象
+	public PlayerVO refreshPlayer(String playerName);
+
+	//判定玩家是否死亡
+	public boolean isDead();
+
+	//判定当前回合是否结束
+	public boolean isRoundEnd();
+
+	//获取已经拥有的技能列表
+	public ArrayList<SkillVO> getSkillList();
+
+	//获取所有属于该角色的技能列表
+	public ArrayList<SkillVO> getAllAvailableList(String playerName);
+
+	//使用装备，将origin替换为new装备，如果原位置没有origin设为""
+	public boolean changeEqiupment(String originEquipmentName, String newEquipmentName);
+
+	//查看装备背包，包括穿戴中的和未穿戴的
+	public ArrayList<EquipmentVO> getEquipmentList();
+
+	//加点，基础属性点和提升都写在map中
+	public boolean increaseStatus(HashMap<String, Integer> increaseMap);
+
+	//学技能
+	public boolean learnSkill(String skillName);
+}
