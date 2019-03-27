@@ -7,8 +7,28 @@ import VO.EquipmentVO;
 import VO.PlayerVO;
 import VO.SkillVO;
 import controller.PlayerController;
+import model.Equipment;
+import model.Skill;
 
-public class Player implements PlayerController {
+public class PlayerControllerImpl implements PlayerController {
+	
+	public String name;
+
+	public int actionPointMax;
+	public int lifeMax;
+	public int lifeRemain;
+	public int constitution;
+	public int Strength;
+	public int mana;
+	public int defence;
+	public int resistance;
+	public int gold;
+
+	public int experience;
+	public int level;
+
+	public ArrayList<Equipment> equipmentList;
+	public ArrayList<Skill> skillList;
 
 	@Override
 	public boolean chooseSkill(String skillName, String... targetname) {

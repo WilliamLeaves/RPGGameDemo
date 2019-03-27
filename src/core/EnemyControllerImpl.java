@@ -3,7 +3,7 @@ package core;
 import VO.EnemyVO;
 import controller.EnemyController;
 
-public class Enemy implements EnemyController {
+public class EnemyControllerImpl implements EnemyController {
 
 	@Override
 	public EnemyVO getEnemy(String name) {

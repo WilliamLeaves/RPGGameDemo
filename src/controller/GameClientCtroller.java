@@ -15,8 +15,8 @@ public interface GameClientCtroller {
 	// 选择游戏角色开始游戏
 	public boolean choosePlayer(String playerName);
 
-	// 进入下一个场景
-	public StageVO nextStage();
+	// 获取 当前的玩家
+	public PlayerVO getPlayer();
 
 	// 获取场景列表
 	public ArrayList<StageVO> getStageList();

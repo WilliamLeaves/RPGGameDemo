@@ -6,10 +6,9 @@ import VO.EnemyVO;
 import VO.PlayerVO;
 import VO.RewardVO;
 import VO.ShopVO;
+import VO.StageVO;
 
 public interface StageController {
-	// 获取场景内的玩家
-	public PlayerVO getPlayer();
 
 	// 获取场景内的所有敌人
 	public ArrayList<EnemyVO> getEnemies();
@@ -28,4 +27,7 @@ public interface StageController {
 
 	// 将东西卖给商店
 	public boolean sellSomethingToShop(String name);
+
+	// 进入下一个场景
+	public StageVO nextStage();
 }
