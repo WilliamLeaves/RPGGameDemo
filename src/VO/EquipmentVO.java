@@ -10,6 +10,7 @@ public class EquipmentVO {
 	public String desc;
 	public String position;
 	public int value;
+	public boolean isWearing;
 
 	public HashMap<String, String> increseList;
 
@@ -25,6 +26,7 @@ public class EquipmentVO {
 		this.position = position;
 		this.value = value;
 		this.increseList = increseList;
+		this.isWearing = false;
 	}
 
 	public Equipment parseEquipment() {

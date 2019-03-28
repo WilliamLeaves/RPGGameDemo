@@ -9,7 +9,7 @@ import model.GameStage;
 import model.PlayerCharacter;
 
 public class GameClient implements GameClientCtroller {
-	public StageControllerImpl stageController;
+	public DataManager instance = DataManager.getInstance();
 
 	@Override
 	public PlayerVO getPlayer() {
@@ -24,14 +24,14 @@ public class GameClient implements GameClientCtroller {
 	@Override
 	public boolean gameStart() {
 		// TODO Auto-generated method stub
-		return DataManager.getInstance().loadData();
+		return instance.loadData();
 	}
 
 	@Override
 	public ArrayList<PlayerVO> getAvailablePlayer() {
 		// TODO Auto-generated method stub
 		ArrayList<PlayerVO> res = new ArrayList<PlayerVO>();
-		ArrayList<PlayerCharacter> list = DataManager.getInstance().playerList;
+		ArrayList<PlayerCharacter> list = instance.playerList;
 		for (PlayerCharacter player : list) {
 			PlayerVO playerVO = new PlayerVO();
 			{
@@ -45,12 +45,12 @@ public class GameClient implements GameClientCtroller {
 	@Override
 	public boolean choosePlayer(String playerName) {
 		// TODO Auto-generated method stub
-		ArrayList<PlayerCharacter> list = DataManager.getInstance().playerList;
+		ArrayList<PlayerCharacter> list = instance.playerList;
 		boolean isContained = false;
 		for (PlayerCharacter player : list) {
 			if (player.name.equals(playerName)) {
 				{
-					DataManager.getInstance().player = player;
+					instance.player = player;
 				}
 				isContained = true;
 				break;
@@ -63,7 +63,7 @@ public class GameClient implements GameClientCtroller {
 	public ArrayList<StageVO> getStageList() {
 		// TODO Auto-generated method stub
 		ArrayList<StageVO> res = new ArrayList<StageVO>();
-		ArrayList<GameStage> list = DataManager.getInstance().stageList;
+		ArrayList<GameStage> list = instance.stageList;
 		for (GameStage stage : list) {
 			StageVO stageVO = null;
 			{

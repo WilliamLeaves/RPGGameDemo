@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PlayerCharacter extends GameCharacter {
 	public String name;
@@ -32,6 +33,24 @@ public class PlayerCharacter extends GameCharacter {
 	public String getType() {
 		// TODO Auto-generated method stub
 		return this.getClass().toString();
+	}
+
+	
+	
+	
+	public void equipmentIncrease(HashMap<String, String> increseList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void equipmentDecrease(HashMap<String, String> increseList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean increase(HashMap<String, Integer> increaseMap) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

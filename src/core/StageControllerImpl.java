@@ -12,7 +12,7 @@ import model.Equipment;
 import model.GameStage;
 
 public class StageControllerImpl implements StageController {
-
+	public DataManager instance = DataManager.getInstance();
 	public ShopVO shopVO;
 	public RewardVO rewardVO;
 
@@ -20,8 +20,8 @@ public class StageControllerImpl implements StageController {
 	public ArrayList<EnemyVO> getEnemies() {
 		// TODO Auto-generated method stub
 		ArrayList<EnemyVO> res = new ArrayList<EnemyVO>();
-		for (String key : DataManager.getInstance().enemyMap.keySet()) {
-			if (DataManager.getInstance().enemyMap.get(key).lifeRemain > 0) {
+		for (String key : instance.enemyMap.keySet()) {
+			if (instance.enemyMap.get(key).lifeRemain > 0) {
 				EnemyVO enemyVO = null;
 				{
 					// unfinished;
@@ -36,8 +36,8 @@ public class StageControllerImpl implements StageController {
 	public boolean isStageClear() {
 		// TODO Auto-generated method stub
 		boolean isClear = true;
-		for (String key : DataManager.getInstance().enemyMap.keySet()) {
-			if (DataManager.getInstance().enemyMap.get(key).lifeRemain > 0) {
+		for (String key : instance.enemyMap.keySet()) {
+			if (instance.enemyMap.get(key).lifeRemain > 0) {
 				isClear = false;
 				break;
 			}
@@ -49,7 +49,7 @@ public class StageControllerImpl implements StageController {
 	public RewardVO getRewards() {
 		// TODO Auto-generated method stub
 		if (rewardVO == null) {
-			this.rewardVO = DataManager.getInstance().currentStage.generateRewards();
+			this.rewardVO = instance.currentStage.generateRewards();
 		}
 		return rewardVO;
 	}
@@ -58,7 +58,7 @@ public class StageControllerImpl implements StageController {
 	public ShopVO getShop() {
 		// TODO Auto-generated method stub
 		if (shopVO == null) {
-			this.shopVO = DataManager.getInstance().currentStage.generateShop();
+			this.shopVO = instance.currentStage.generateShop();
 		}
 		return shopVO;
 	}
@@ -70,11 +70,11 @@ public class StageControllerImpl implements StageController {
 		for (int i = 0; i < list.size(); i++) {
 			EquipmentVO vo = list.get(i);
 			if (vo.name.equals(name)) {
-				if (vo.value <= DataManager.getInstance().player.gold) {
+				if (vo.value <= instance.player.gold) {
 					this.shopVO.equipmentList.remove(i);
 					Equipment eq = list.get(i).parseEquipment();
-					DataManager.getInstance().player.bag.add(eq);
-					DataManager.getInstance().player.gold -= vo.value;
+					instance.player.bag.add(eq);
+					instance.player.gold -= vo.value;
 					return true;
 				}
 			}
@@ -85,13 +85,13 @@ public class StageControllerImpl implements StageController {
 	@Override
 	public boolean sellSomethingToShop(String name) {
 		// TODO Auto-generated method stub
-		ArrayList<Equipment> list = DataManager.getInstance().player.bag;
+		ArrayList<Equipment> list = instance.player.bag;
 		for (int i = 0; i < list.size(); i++) {
 			Equipment equipment = list.get(i);
 			if (equipment.name.equals(name)) {
 				list.remove(i);
-				DataManager.getInstance().player.gold += equipment.value
-						* Integer.parseInt(DataManager.getInstance().baseConfigurationMap.get("SELLING_VALUE_RATE"));
+				instance.player.gold += equipment.value
+						* Integer.parseInt(instance.baseConfigurationMap.get("SELLING_VALUE_RATE"));
 				return true;
 			}
 		}
@@ -102,10 +102,8 @@ public class StageControllerImpl implements StageController {
 	public StageVO nextStage() {
 		// TODO Auto-generated method stub
 		StageVO stagtVO = null;
-		ArrayList<GameStage> list = DataManager.getInstance().stageList;
-		int currentStageNum = DataManager.getInstance().currentStage != null
-				? DataManager.getInstance().currentStage.stageNum
-				: 0;
+		ArrayList<GameStage> list = instance.stageList;
+		int currentStageNum = instance.currentStage != null ? instance.currentStage.stageNum : 0;
 		for (GameStage stage : list) {
 			if (stage.stageNum == currentStageNum + 1) {
 				{
@@ -115,6 +113,19 @@ public class StageControllerImpl implements StageController {
 		}
 		this.rewardVO = null;
 		this.shopVO = null;
+		instance.isPlayerRound = true;
 		return stagtVO;
 	}
+
+	@Override
+	public boolean nextRound() {
+		// TODO Auto-generated method stub
+		if (instance.isPlayerRound == false) {
+			return false;
+		} else {
+			instance.isPlayerRound = true;
+			return true;
+		}
+	}
+
 }

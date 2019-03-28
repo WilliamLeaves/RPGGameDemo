@@ -33,6 +33,7 @@ public class DataManager {
 	public PlayerCharacter player;
 	public HashMap<String, EnemyCharacter> enemyMap;
 
+	public boolean isPlayerRound;
 	
 	
 	private DataManager() {

@@ -1,7 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+
 public class EnemyCharacter extends GameCharacter {
 	public int lifeRemain;
+	public String name;
+	public ArrayList<Skill> skillList;
 
 	@Override
 	public void desc() {

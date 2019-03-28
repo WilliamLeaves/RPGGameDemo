@@ -30,4 +30,8 @@ public interface StageController {
 
 	// 进入下一个场景
 	public StageVO nextStage();
+
+	// 结束玩家回合
+
+	public boolean nextRound();
 }
