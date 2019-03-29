@@ -7,6 +7,7 @@ import VO.StageVO;
 import controller.GameClientCtroller;
 import model.GameStage;
 import model.PlayerCharacter;
+import util.VOFactory;
 
 public class GameClient implements GameClientCtroller {
 	public DataManager instance = DataManager.getInstance();
@@ -16,7 +17,7 @@ public class GameClient implements GameClientCtroller {
 		// TODO Auto-generated method stub
 		PlayerVO playerVO = null;
 		{
-			// unfinished
+			playerVO = VOFactory.getPlayerVO(instance.player);
 		}
 		return playerVO;
 	}
@@ -35,7 +36,7 @@ public class GameClient implements GameClientCtroller {
 		for (PlayerCharacter player : list) {
 			PlayerVO playerVO = new PlayerVO();
 			{
-				// unfinished
+				playerVO = VOFactory.getPlayerVO(player);
 			}
 			res.add(playerVO);
 		}
@@ -50,7 +51,7 @@ public class GameClient implements GameClientCtroller {
 		for (PlayerCharacter player : list) {
 			if (player.name.equals(playerName)) {
 				{
-					instance.player = player;
+					instance.player = player.clone();
 				}
 				isContained = true;
 				break;
@@ -67,7 +68,7 @@ public class GameClient implements GameClientCtroller {
 		for (GameStage stage : list) {
 			StageVO stageVO = null;
 			{
-				// unfinished
+				stageVO = VOFactory.getStageVO(stage);
 			}
 			res.add(stageVO);
 		}

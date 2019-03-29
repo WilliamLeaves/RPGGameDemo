@@ -3,6 +3,7 @@ package VO;
 import java.util.ArrayList;
 
 public class PlayerVO {
+	public String name;
 	public int lifeRemain;
 	public int lifeMax;
 
@@ -24,9 +25,10 @@ public class PlayerVO {
 
 	public ArrayList<BuffVO> buffList;
 
-	public PlayerVO(int lifeRemain, int lifeMax, int constitution, int strength, int mana, int defence, int resisitence,
+	public PlayerVO(String name,int lifeRemain, int lifeMax, int constitution, int strength, int mana, int defence, int resisitence,
 			int gold, int exp, int level, int statusIncreasePointRemain, int skillIncreasePointRemain,
 			int actionPointRemain, int actionPointMax, ArrayList<BuffVO> buffList) {
+		this.name=name;
 		this.lifeRemain = lifeRemain;
 		this.lifeMax = lifeMax;
 		this.constitution = constitution;

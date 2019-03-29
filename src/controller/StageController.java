@@ -31,7 +31,6 @@ public interface StageController {
 	// 进入下一个场景
 	public StageVO nextStage();
 
-	// 结束玩家回合
-
+	// 结束玩家回合，这里只是恢复玩家行动点，需要调用enemy的getEnemyChose方法使敌方行动
 	public boolean nextRound();
 }

@@ -6,7 +6,10 @@ import java.util.HashMap;
 import model.GameCharacter;
 
 public abstract class Buff {
+	public String name;
+	public String desc;
 
-	public abstract void execute(GameCharacter caster, ArrayList<GameCharacter> targetList, HashMap<String, String> hashMap);
+	public abstract void execute(GameCharacter caster, ArrayList<GameCharacter> targetList,
+			HashMap<String, String> hashMap);
 
 }

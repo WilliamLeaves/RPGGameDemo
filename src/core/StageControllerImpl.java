@@ -10,6 +10,7 @@ import VO.StageVO;
 import controller.StageController;
 import model.Equipment;
 import model.GameStage;
+import util.VOFactory;
 
 public class StageControllerImpl implements StageController {
 	public DataManager instance = DataManager.getInstance();
@@ -24,7 +25,7 @@ public class StageControllerImpl implements StageController {
 			if (instance.enemyMap.get(key).lifeRemain > 0) {
 				EnemyVO enemyVO = null;
 				{
-					// unfinished;
+					enemyVO = VOFactory.getEnemyVO(instance.enemyMap.get(key));
 				}
 				res.add(enemyVO);
 			}
@@ -49,7 +50,7 @@ public class StageControllerImpl implements StageController {
 	public RewardVO getRewards() {
 		// TODO Auto-generated method stub
 		if (rewardVO == null) {
-			this.rewardVO = instance.currentStage.generateRewards();
+			this.rewardVO = VOFactory.getRewardVO();
 		}
 		return rewardVO;
 	}
@@ -58,7 +59,7 @@ public class StageControllerImpl implements StageController {
 	public ShopVO getShop() {
 		// TODO Auto-generated method stub
 		if (shopVO == null) {
-			this.shopVO = instance.currentStage.generateShop();
+			this.shopVO = VOFactory.getShopVO();
 		}
 		return shopVO;
 	}
@@ -108,6 +109,12 @@ public class StageControllerImpl implements StageController {
 			if (stage.stageNum == currentStageNum + 1) {
 				{
 					// unfinished
+					// 加载instance中的currentStage，并初始化其中的enemy
+					instance.currentStage = stage;
+					instance.player.lifeMax = Integer.parseInt(instance.baseConfigurationMap.get("CONSTITUTION_PARA"))
+							* instance.player.constitution;
+					instance.player.lifeRemain = instance.player.lifeMax;
+					instance.enemyMap = stage.getEnemy();
 				}
 			}
 		}
@@ -124,6 +131,7 @@ public class StageControllerImpl implements StageController {
 			return false;
 		} else {
 			instance.isPlayerRound = true;
+			instance.player.actionPointRemain = instance.player.actionPointMax;
 			return true;
 		}
 	}

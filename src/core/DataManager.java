@@ -22,6 +22,7 @@ public class DataManager {
 
 	private DataLoader dataLoader;
 
+	//初始载入数据
 	public HashMap<String,String> baseConfigurationMap;
 	public ArrayList<PlayerCharacter> playerList;
 	public ArrayList<EnemyCharacter> enemyList;
@@ -29,6 +30,9 @@ public class DataManager {
 	public ArrayList<Equipment> equipmentList;
 	public ArrayList<GameStage> stageList;
 
+	
+	
+	//运行时使用到的数据
 	public GameStage currentStage;
 	public PlayerCharacter player;
 	public HashMap<String, EnemyCharacter> enemyMap;

@@ -11,6 +11,7 @@ import model.EnemyCharacter;
 import model.Equipment;
 import model.GameCharacter;
 import model.Skill;
+import util.VOFactory;
 
 public class PlayerControllerImpl implements PlayerController {
 	public DataManager instance = DataManager.getInstance();
@@ -36,24 +37,23 @@ public class PlayerControllerImpl implements PlayerController {
 		flag = true;
 
 		// 确定技能释放目标
-		ArrayList<EnemyCharacter> enemyList = instance.enemyList;
+		HashMap<String, EnemyCharacter> enemyMap = instance.enemyMap;
 		ArrayList<GameCharacter> targetList = new ArrayList<GameCharacter>();
 		if (chosenSkill.targetType.equals("self")) {
 			targetList.add(instance.player);
 			flag = false;
 		} else if (chosenSkill.skillName.equals("single_enemy")) {
 			for (String na : targetname) {
-				for (EnemyCharacter enemy : enemyList) {
-					if (enemy.name.equals(na)) {
-						targetList.add(enemy);
-						flag = false;
-						break;
-					}
+				EnemyCharacter enemy = enemyMap.get("na");
+				if (enemy != null) {
+					targetList.add(enemy);
+					flag = false;
+					break;
 				}
 			}
 		} else if (chosenSkill.skillName.equals("all_enemies")) {
-			for (EnemyCharacter enemy : enemyList) {
-				targetList.addAll(enemyList);
+			for (EnemyCharacter enemy : enemyMap.values()) {
+				targetList.add(enemy);
 			}
 			flag = false;
 		} else if (chosenSkill.skillName.equals("random_enemies")) {
@@ -69,6 +69,7 @@ public class PlayerControllerImpl implements PlayerController {
 		flag = true;
 
 		// 使用技能效果
+		this.instance.player.actionPointRemain -= chosenSkill.actionPointCost;
 		for (int i = 0; i < chosenSkill.buffList.size(); i++) {
 			chosenSkill.buffList.get(i).execute(instance.player, targetList, chosenSkill.buffParameterMap.get(i));
 			{
@@ -80,11 +81,11 @@ public class PlayerControllerImpl implements PlayerController {
 	}
 
 	@Override
-	public PlayerVO refreshPlayer(String playerName) {
+	public PlayerVO refreshPlayer() {
 		// TODO Auto-generated method stub
 		PlayerVO playerVO = null;
 		{
-			// unfinished
+			playerVO = VOFactory.getPlayerVO(instance.player);
 		}
 		return playerVO;
 	}
@@ -109,7 +110,7 @@ public class PlayerControllerImpl implements PlayerController {
 		for (Skill skill : list) {
 			SkillVO skillVO = null;
 			{
-				// unfinished
+				skillVO = VOFactory.getSkillVO(skill);
 			}
 			res.add(skillVO);
 		}
@@ -124,7 +125,7 @@ public class PlayerControllerImpl implements PlayerController {
 		for (Skill skill : list) {
 			SkillVO skillVO = null;
 			if (skill.userName.equals(playerName)) {
-				// unfinished
+				skillVO = VOFactory.getSkillVO(skill);
 			}
 			res.add(skillVO);
 		}
@@ -192,7 +193,7 @@ public class PlayerControllerImpl implements PlayerController {
 		for (Equipment eq1 : wearing) {
 			EquipmentVO eqvo = null;
 			{
-				// unfinished
+				eqvo = VOFactory.getEquipmentVO(eq1);
 			}
 			eqvo.isWearing = true;
 			res.add(eqvo);
@@ -200,7 +201,7 @@ public class PlayerControllerImpl implements PlayerController {
 		for (Equipment eq2 : bagging) {
 			EquipmentVO eqvo = null;
 			{
-				// unfinished
+				eqvo = VOFactory.getEquipmentVO(eq2);
 			}
 			eqvo.isWearing = false;
 			res.add(eqvo);
@@ -252,16 +253,24 @@ public class PlayerControllerImpl implements PlayerController {
 		flag = true;
 
 		// 判断是否已经学会这个技能，技能是否已经超过等级上限
+
+		int learned = -1;
 		for (Skill skill : list) {
-			if (skill.skillName.equals(skillLearning.skillName)
-					&& (skill.level >= Integer.parseInt(skill.skillParameter.get("max_level")))) {
-				return false;
+			if (skill.skillName.equals(skillLearning.skillName)) {
+				learned = list.indexOf(skill);
+				if ((skill.level >= Integer.parseInt(skill.skillParameter.get("max_level")))) {
+					return false;
+				}
 			}
 		}
 		if (flag == false) {
 			return false;
 		} else {
-			instance.player.skillList.add(skillLearning);
+			if (learned != -1) {
+				instance.player.skillList.get(learned).level++;
+			} else {
+				instance.player.skillList.add(skillLearning.clone());
+			}
 			return true;
 		}
 	}

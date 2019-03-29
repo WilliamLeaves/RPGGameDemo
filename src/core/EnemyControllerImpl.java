@@ -7,6 +7,7 @@ import controller.EnemyController;
 import model.EnemyCharacter;
 import model.GameCharacter;
 import model.Skill;
+import util.VOFactory;
 
 public class EnemyControllerImpl implements EnemyController {
 	public DataManager instance = DataManager.getInstance();
@@ -18,7 +19,7 @@ public class EnemyControllerImpl implements EnemyController {
 			if (instance.enemyMap.get(key).name.equals(name)) {
 				EnemyVO vo = null;
 				{
-					// unfinished
+					vo = VOFactory.getEnemyVO(instance.enemyMap.get(key));
 				}
 				return vo;
 			}
@@ -33,7 +34,7 @@ public class EnemyControllerImpl implements EnemyController {
 			if (instance.enemyMap.get(key).name.equals(enemyName)) {
 				EnemyVO vo = null;
 				{
-					// unfinished
+					vo = VOFactory.getEnemyVO(instance.enemyMap.get(key));
 				}
 				return vo;
 			}

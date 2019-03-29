@@ -12,7 +12,7 @@ public interface PlayerController {
 	public boolean chooseSkill(String skillName, String... targetname);
 
 	// 获取玩家对象
-	public PlayerVO refreshPlayer(String playerName);
+	public PlayerVO refreshPlayer();
 
 	// 判定玩家是否死亡
 	public boolean isDead();
@@ -35,7 +35,7 @@ public interface PlayerController {
 	// 查看装备背包，包括穿戴中的和未穿戴的
 	public ArrayList<EquipmentVO> getEquipmentList();
 
-	// 加点，基础属性点和提升都写在map中
+	// 加点，基础属性点和提升都写在map中,为Strength,Constitution,Mana,Defence,Resistence五个属性
 	public boolean increaseStatus(HashMap<String, Integer> increaseMap);
 
 	// 学技能
