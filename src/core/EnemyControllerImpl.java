@@ -71,11 +71,7 @@ public class EnemyControllerImpl implements EnemyController {
 				}
 				// 使用技能效果
 				for (int i = 0; i < chosenSkill.buffList.size(); i++) {
-					chosenSkill.buffList.get(i).execute(en, targetList, chosenSkill.buffParameterMap.get(i));
-					{
-						// unfinished
-						// 释放技能
-					}
+					chosenSkill.beUsed(en,targetList);
 				}
 				return en.name + "使用" + chosenSkill + "技能！";
 			}

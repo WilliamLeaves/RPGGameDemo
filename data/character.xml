@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characters>
+	<character id="1">
+		<name>战士</name>
+		<type>player</type>
+		<init_life>0</init_life>
+		<init_gold>99</init_gold>
+		
+		<constitution>3</constitution>
+		<strength>3</strength>
+		<mana>0</mana>
+		<defence>2</defence>
+		<resistence>2</resistence>
+		<init_skill>
+			<skill>
+				<skill_name>打击</skill_name>
+				<skill_level>1</skill_level>
+			</skill>			
+			<skill>
+				<skill_name>重击</skill_name>
+				<skill_level>1</skill_level>
+			</skill>
+		</init_skill>
+		<init_equipment>
+			<equipment>
+				<equipment_name>生锈的刀</equipment_name>
+			</equipment>
+		</init_equipment>
+	</character>
+	
+	<character>
+		<name>盗贼</name>
+		<type>player</type>
+		<init_life>0</init_life>
+		<init_gold>99</init_gold>
+		
+		<constitution>2</constitution>
+		<strength>4</strength>
+		<mana>2</mana>
+		<defence>1</defence>
+		<resistence>1</resistence>
+		<init_skill>
+			<skill>
+				<skill_name>打击</skill_name>
+				<skill_level>1</skill_level>
+			</skill>
+			<skill>
+				<skill_name>中和</skill_name>
+				<skill_level>1</skill_level>
+			</skill>
+		</init_skill>
+		<init_equipment>
+			<equipment>
+				<equipment_name>短匕首</equipment_name>
+			</equipment>
+		</init_equipment>
+	</character>
+	
+	
+	<character>
+		<name>训练木桩1,训练木桩2</name>
+		<type>enemy</type>
+		<init_life>0</init_life>
+		<constitution>6,8</constitution>
+		<strength>0,1</strength>
+		<mana>0,0</mana>
+		<defence>0,1</defence>
+		<resistence>0,0</resistence>
+		
+		<init_skill>
+			<skill>
+				<skill_name>攻击</skill_name>
+				<skill_level>1,2</skill_level>
+			</skill>
+		</init_skill>
+		
+	</character>
+</characters>

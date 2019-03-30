@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	装备属性：
+	<eqiupment user_name="" name="" position="" value="" purchasable="" >
+		<base_status_increase>
+			<constitution_increase></constitution_increase>
+			<strength_increase></strength_increase>
+			<mana_increase></mana_increase>
+			<defence_increase></defence_increase>
+			<resistence_increase></resistence_increase>
+		</base_status_increase>
+		<appear_pro></appear_pro>
+		<lowest_appear_stage_num></lowest_appear_stage_num>
+		<lowest_level></lowest_level>
+	</eqiupment>
+-->
+<eqiupments>
+	<eqiupment user_name="战士" name="生锈的刀" position="weapon" value="0" purchasable="false" droppable="false">
+		<base_status_increase>
+			<constitution_increase>0</constitution_increase>
+			<strength_increase>2</strength_increase>
+			<mana_increase>0</mana_increase>
+			<defence_increase>0</defence_increase>
+			<resistence_increase>0</resistence_increase>
+		</base_status_increase>
+		<appear_pro>0</appear_pro>
+		<lowest_appear_stage_num>1</lowest_appear_stage_num>
+		<lowest_level>1</lowest_level>
+	</eqiupment>
+	
+	<eqiupment user_name="盗贼" name="短匕首" position="weapon" value="0" purchasable="false" droppable="true">
+		<base_status_increase>
+			<constitution_increase>0</constitution_increase>
+			<strength_increase>1</strength_increase>
+			<mana_increase>1</mana_increase>
+			<defence_increase>0</defence_increase>
+			<resistence_increase>0</resistence_increase>
+		</base_status_increase>
+		<appear_pro>0</appear_pro>
+		<lowest_appear_stage_num>1</lowest_appear_stage_num>
+		<lowest_level>1</lowest_level>
+	</eqiupment>
+	
+		<eqiupment user_name="all" name="皮革帽" position="head" value="100" purchasable="true" droppable="true">
+		<base_status_increase>
+			<constitution_increase>1</constitution_increase>
+			<strength_increase>0</strength_increase>
+			<mana_increase>0</mana_increase>
+			<defence_increase>1</defence_increase>
+			<resistence_increase>1</resistence_increase>
+		</base_status_increase>
+		<appear_pro>20</appear_pro>
+		<lowest_appear_stage_num>3</lowest_appear_stage_num>
+		<lowest_level>2</lowest_level>
+	</eqiupment>	
+	
+	<eqiupment user_name="all" name="铁头盔" position="head" value="200" purchasable="true" droppable="true">
+		<base_status_increase>
+			<constitution_increase>2</constitution_increase>
+			<strength_increase>1</strength_increase>
+			<mana_increase>0</mana_increase>
+			<defence_increase>3</defence_increase>
+			<resistence_increase>2</resistence_increase>
+		</base_status_increase>
+		<appear_pro>10</appear_pro>
+		<lowest_appear_stage_num>5</lowest_appear_stage_num>
+		<lowest_level>4</lowest_level>
+	</eqiupment>	
+	
+	<eqiupment user_name="all" name="精钢头盔" position="head" value="350" purchasable="true" droppable="true">
+		<base_status_increase>
+			<constitution_increase>2</constitution_increase>
+			<strength_increase>1</strength_increase>
+			<mana_increase>0</mana_increase>
+			<defence_increase>4</defence_increase>
+			<resistence_increase>4</resistence_increase>
+		</base_status_increase>
+		<appear_pro>5</appear_pro>
+		<lowest_appear_stage_num>7</lowest_appear_stage_num>
+		<lowest_level>6</lowest_level>
+	</eqiupment>	
+	
+	<eqiupment user_name="all" name="红宝石戒指" position="ring" value="180" purchasable="true" droppable="false">
+		<base_status_increase>
+			<constitution_increase>1</constitution_increase>
+			<strength_increase>1</strength_increase>
+			<mana_increase>1</mana_increase>
+			<defence_increase>0</defence_increase>
+			<resistence_increase>2</resistence_increase>
+		</base_status_increase>
+		<appear_pro>7</appear_pro>
+		<lowest_appear_stage_num>1</lowest_appear_stage_num>
+		<lowest_level>1</lowest_level>
+	</eqiupment>	
+	
+	<eqiupment user_name="all" name="全身铠甲" position="armour" value="320" purchasable="true" droppable="true">
+		<base_status_increase>
+			<constitution_increase>10</constitution_increase>
+			<strength_increase>-1</strength_increase>
+			<mana_increase>-4</mana_increase>
+			<defence_increase>6</defence_increase>
+			<resistence_increase>0</resistence_increase>
+		</base_status_increase>
+		<appear_pro>10</appear_pro>
+		<lowest_appear_stage_num>6</lowest_appear_stage_num>
+		<lowest_level>4</lowest_level>
+	</eqiupment>	
+	
+	<eqiupment user_name="战士" name="长枪" position="weapon" value="280" purchasable="true" droppable="true">
+		<base_status_increase>
+			<constitution_increase>0</constitution_increase>
+			<strength_increase>6</strength_increase>
+			<mana_increase>0</mana_increase>
+			<defence_increase>-1</defence_increase>
+			<resistence_increase>0</resistence_increase>
+		</base_status_increase>
+		<appear_pro>8</appear_pro>
+		<lowest_appear_stage_num>5</lowest_appear_stage_num>
+		<lowest_level>3</lowest_level>
+	</eqiupment>
+	
+</eqiupments>

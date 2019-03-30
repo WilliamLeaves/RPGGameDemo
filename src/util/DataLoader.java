@@ -5,8 +5,9 @@ import org.dom4j.DocumentException;
 import core.DataManager;
 
 public abstract class DataLoader {
+	public DataManager instance = DataManager.getInstance();
 
-	public abstract boolean load(DataManager dataManager) throws DocumentException;
+	public abstract boolean load() throws DocumentException;
 
-	public abstract Object loadByName(DataManager dataManager, String nameAttribute) throws DocumentException;
+	public abstract Object loadByName(String nameAttribute) throws DocumentException;
 }

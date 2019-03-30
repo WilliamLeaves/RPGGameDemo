@@ -1,0 +1,4 @@
+BuffµÄ²ÎÊıÃèÊö
+	Base_Status_Change:status_id
+		Strength:1,
+		

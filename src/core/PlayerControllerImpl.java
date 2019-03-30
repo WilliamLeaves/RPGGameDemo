@@ -71,11 +71,7 @@ public class PlayerControllerImpl implements PlayerController {
 		// 使用技能效果
 		this.instance.player.actionPointRemain -= chosenSkill.actionPointCost;
 		for (int i = 0; i < chosenSkill.buffList.size(); i++) {
-			chosenSkill.buffList.get(i).execute(instance.player, targetList, chosenSkill.buffParameterMap.get(i));
-			{
-				// unfinished
-				// 释放技能
-			}
+			chosenSkill.beUsed(instance.player, targetList);
 		}
 		return true;
 	}
@@ -120,14 +116,39 @@ public class PlayerControllerImpl implements PlayerController {
 	@Override
 	public ArrayList<SkillVO> getAllAvailableList(String playerName) {
 		// TODO Auto-generated method stub
-		ArrayList<Skill> list = instance.skillList;
+		ArrayList<Skill> allList = instance.skillList;
+		ArrayList<Skill> learnedList = instance.player.skillList;
 		ArrayList<SkillVO> res = new ArrayList<SkillVO>();
-		for (Skill skill : list) {
-			SkillVO skillVO = null;
-			if (skill.userName.equals(playerName)) {
-				skillVO = VOFactory.getSkillVO(skill);
+		// 找出已有技能等级不为0，且新技能等级不超过上限的技能
+		for (Skill skill : allList) {
+			Skill learned = null;
+			for (Skill skill1 : learnedList) {
+				if (skill1.skillName.equals(skill.skillName) && skill.level == skill1.level + 1) {
+					SkillVO skillVO = VOFactory.getSkillVO(skill);
+					res.add(skillVO);
+					break;
+				}
 			}
-			res.add(skillVO);
+		}
+		// 找出已有技能等级为0，且该技能前置技能等级不为零的
+		for (Skill skill : allList) {
+			boolean isLearned = false;
+			for (Skill skill1 : learnedList) {
+				if (skill1.skillName.equals(skill.skillName)) {
+					isLearned = true;
+					break;
+				}
+			}
+			if (isLearned == true) {
+				continue;
+			}
+			for (Skill skill2 : learnedList) {
+				if (skill2.skillName.equals(skill.skillParameter.get("front_skill"))) {
+					SkillVO skillVO = VOFactory.getSkillVO(skill);
+					res.add(skillVO);
+					break;
+				}
+			}
 		}
 		return res;
 	}
@@ -267,8 +288,15 @@ public class PlayerControllerImpl implements PlayerController {
 			return false;
 		} else {
 			if (learned != -1) {
-				instance.player.skillList.get(learned).level++;
+				// 移除旧的技能,增加升级过的技能
+				instance.player.skillList.remove(learned);
+				for (Skill levelUpSkill : instance.skillList) {
+					if (levelUpSkill.skillName.equals(skillName) && levelUpSkill.level == learned + 1) {
+						instance.player.skillList.add(levelUpSkill.clone());
+					}
+				}
 			} else {
+				// 加入新的技能
 				instance.player.skillList.add(skillLearning.clone());
 			}
 			return true;

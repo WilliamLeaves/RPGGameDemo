@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stages>
+	<stage stage_num="1" is_battle="true">
+		<enemies>
+			<enemy name="训练木桩1"></enemy>
+		</enemies>
+	</stage>
+	<stage stage_num="2" is_battle="false">
+		<enemies>
+		</enemies>
+	</stage>
+	<stage stage_num="3" is_battle="true">
+		<enemies>
+			<enemy name="训练木桩2"></enemy>
+		</enemies>
+	</stage>
+	<stage stage_num="4" is_battle="false">
+		<enemies>
+		</enemies>
+	</stage>
+	<stage stage_num="5" is_battle="true">
+		<enemies>
+			<enemy name="训练木桩1"></enemy>
+			<enemy name="训练木桩2"></enemy>
+		</enemies>
+	</stage>
+</stages>

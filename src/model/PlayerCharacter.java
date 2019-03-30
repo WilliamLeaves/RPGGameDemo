@@ -39,20 +39,39 @@ public class PlayerCharacter extends GameCharacter {
 
 	public void equipmentIncrease(HashMap<String, String> increaseList) {
 		// TODO Auto-generated method stub
-		this.strength += Integer.parseInt(increaseList.get("Strength"));
-		this.constitution += Integer.parseInt(increaseList.get("Constitution"));
-		this.mana += Integer.parseInt(increaseList.get("Mana"));
-		this.defence += Integer.parseInt(increaseList.get("Defence"));
-		this.resistence += Integer.parseInt(increaseList.get("Resistence"));
+		this.initBaseStatus.replace("Strength",
+				this.initBaseStatus.get("Strength") + Integer.parseInt(increaseList.get("Strength")));
+		this.initBaseStatus.replace("Constitution",
+				this.initBaseStatus.get("Constitution") + Integer.parseInt(increaseList.get("Constitution")));
+		this.initBaseStatus.replace("Mana",
+				this.initBaseStatus.get("Mana") + Integer.parseInt(increaseList.get("Mana")));
+		this.initBaseStatus.replace("Defence",
+				this.initBaseStatus.get("Defence") + Integer.parseInt(increaseList.get("Defence")));
+		this.initBaseStatus.replace("Resistence",
+				this.initBaseStatus.get("Resistence") + Integer.parseInt(increaseList.get("Resistence")));
+		// this.constitution += Integer.parseInt(increaseList.get("Constitution"));
+		// this.mana += Integer.parseInt(increaseList.get("Mana"));
+		// this.defence += Integer.parseInt(increaseList.get("Defence"));
+		// this.resistence += Integer.parseInt(increaseList.get("Resistence"));
 	}
 
 	public void equipmentDecrease(HashMap<String, String> increaseList) {
 		// TODO Auto-generated method stub
-		this.strength -= Integer.parseInt(increaseList.get("Strength"));
-		this.constitution -= Integer.parseInt(increaseList.get("Constitution"));
-		this.mana -= Integer.parseInt(increaseList.get("Mana"));
-		this.defence -= Integer.parseInt(increaseList.get("Defence"));
-		this.resistence -= Integer.parseInt(increaseList.get("Resistence"));
+		this.initBaseStatus.replace("Strength",
+				this.initBaseStatus.get("Strength") - Integer.parseInt(increaseList.get("Strength")));
+		this.initBaseStatus.replace("Constitution",
+				this.initBaseStatus.get("Constitution") - Integer.parseInt(increaseList.get("Constitution")));
+		this.initBaseStatus.replace("Mana",
+				this.initBaseStatus.get("Mana") - Integer.parseInt(increaseList.get("Mana")));
+		this.initBaseStatus.replace("Defence",
+				this.initBaseStatus.get("Defence") - Integer.parseInt(increaseList.get("Defence")));
+		this.initBaseStatus.replace("Resistence",
+				this.initBaseStatus.get("Resistence") - Integer.parseInt(increaseList.get("Resistence")));
+		// this.strength -= Integer.parseInt(increaseList.get("Strength"));
+		// this.constitution -= Integer.parseInt(increaseList.get("Constitution"));
+		// this.mana -= Integer.parseInt(increaseList.get("Mana"));
+		// this.defence -= Integer.parseInt(increaseList.get("Defence"));
+		// this.resistence -= Integer.parseInt(increaseList.get("Resistence"));
 
 	}
 
@@ -68,12 +87,16 @@ public class PlayerCharacter extends GameCharacter {
 		if (sum > this.statusIncreasePointRemain) {
 			return false;
 		} else {
-			this.statusIncreasePointRemain -= sum;
-			this.strength += strength_inc;
-			this.constitution += constitution_inc;
-			this.mana += mana_inc;
-			this.defence += defence_inc;
-			this.resistence += resistence_inc;
+			this.initBaseStatus.replace("Strength",
+					this.initBaseStatus.get("Strength") + strength_inc);
+			this.initBaseStatus.replace("Constitution",
+					this.initBaseStatus.get("Constitution") + constitution_inc);
+			this.initBaseStatus.replace("Mana",
+					this.initBaseStatus.get("Mana") + mana_inc);
+			this.initBaseStatus.replace("Defence",
+					this.initBaseStatus.get("Defence") + defence_inc);
+			this.initBaseStatus.replace("Resistence",
+					this.initBaseStatus.get("Resistence") +resistence_inc);
 		}
 		return false;
 	}
@@ -107,12 +130,6 @@ public class PlayerCharacter extends GameCharacter {
 			clonePlayer.bag.add(eq.clone());
 		}
 		return clonePlayer;
-	}
-
-	@Override
-	public void notifyAllBuff(State state) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	装备模板：
+	user_name:使用者名称，缺省或all意为所有角色都可以使用
+	name：装备名称
+	position：该装备适用的部位，必须是BaseConfiguration.xml文件中已经定义的部位
+	rank：装备的品阶，会根据BaseConfiguration.xml文件中的定义，影响装备的稀有度，词条数量和词条稀有度
+	value：装备的价值，即装备买入会消耗的gold的数目，也会根据BaseConfiguration.xml文件定义的商店折扣计算卖出价格
+	purchasable：装备是否可以从商店买到
+	constant：该装备的tag是否是固定的，即完全由<tags>词条决定而非使用词条池进行随机
+	tag_set：没有出现在该装备tags词条中的词条是否允许被随机池赋予，true代表所有随机池的词条都允许进入该装备，false代表都不允许进入该装备
+	tags：装备限定词条池
+		tag：这里出现的词条在可用词条中不一定要出现
+			name：词条名称
+			describe：词条描述
+			rank：词条品级
+			appear_pro：出现该词条的概率，若缺省则默认为1
+			buffs：词条buff效果，需要和对应的类名完全一致
+			skills：词条skill效果，需要在skill.xml文件中已经存在
+	<equipment user_name="" name="" position="" rank="" value="" purchasable="" constant="" tag_set="" >
+		<tags>
+			<tag name="" describe="" rank="" appear_pro="" >
+				<buffs>
+					<buff buff_name="">
+						<parameter name=""></parameter>W
+					</buff>
+				</buffs>
+				<skills>
+					<skill name=""></skill>
+				</skills>
+			</tag>
+		</tags>
+	</equipment>
+	
+	可用词条模板：
+	<available_tag user_name="" name="" describe="" rank="" appear_pro="">
+		<positions>
+			<position name=""><position>
+		</positions>
+		<buffs>
+			<buff buff_name="">
+				<parameter name="">parameter</parameter>
+			</buff>
+		</buffs>
+		<skills>
+			<skill name=""></skill>
+		</skills>
+	</available_tag>
+-->
+
+<equipments>
+	<equipment user_name="战士" name="生锈的刀" position="weapon" rank="normal" value="0" purchasable="false" constant="true" tag_set="false" >
+		<tags>
+			<tag name="生锈了" describe="即便是生锈了，也能伤人" rank="normal" appear_pro="1" >
+				<buffs>
+					<buff buff_name="Base_Status_Change">
+						<parameter name="staut_id">1</parameter>
+						<parameter name="value">1</parameter>
+					</buff>
+				</buffs>
+				<skills>
+				</skills>
+			</tag>
+		</tags>
+	</equipment>
+	
+		<equipment user_name="盗贼" name="短匕首" position="weapon" rank="normal" value="0" purchasable="false" constant="true" tag_set="false" >
+		<tags>
+			<tag name="尖锐" describe="技能伤人，也能伤己" rank="normal" appear_pro="1" >
+				<buffs>
+				</buffs>
+				<skills>
+					<skill name="匕首刺击"></skill>
+				</skills>
+			</tag>
+		</tags>
+	</equipment>
+</equipments>
+
+<available_tags>
+	<available_tag user_name="all" name="力量提升" describe="提升你的攻击力" rank="rare" appear_pro="1">
+		<positions>
+			<position name="weapon"><position>
+		</positions>
+		<buffs>
+			<buff buff_name="Base_Status_Change_Variable">
+				<parameter name="min_value">1</parameter>
+				<parameter name="max_value">4</parameter>
+				<parameter name="grow_by_rank">1</parameter>
+			</buff>
+		</buffs>
+		<skills>
+			<skill name=""></skill>
+		</skills>
+	</available_tag>
+</available_tags>

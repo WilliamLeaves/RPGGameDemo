@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.buff.Buff;
+import model.buff.BuffFactory;
 
 public class Skill {
 	public String skillName;
@@ -14,8 +15,25 @@ public class Skill {
 	public int actionPointCost;
 
 	public HashMap<String, String> skillParameter;
-	public ArrayList<Buff> buffList;
+	public ArrayList<String> buffList;
 	public ArrayList<HashMap<String, String>> buffParameterMap;
+
+	public void beUsed(GameCharacter caster, ArrayList<GameCharacter> targetList) {
+		// 初始化生成bufflist
+		ArrayList<Buff> concreteBuffList = new ArrayList<Buff>();
+		for (int i = 0; i < buffList.size(); i++) {
+			BuffFactory.createBuff(buffList.get(i), buffParameterMap.get(i));
+		}
+
+		// 调用各个buff的beAdded方法
+		for (Buff buff : concreteBuffList) {
+			buff.beAdded(caster, targetList);
+		}
+		// 通知caster使用了技能
+		
+		
+		// 通知target获得了buff
+	}
 
 	public Skill clone() {
 		Skill cloneSkill = new Skill();

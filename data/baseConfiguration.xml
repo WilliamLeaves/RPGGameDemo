@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+	<configuration name="BASE_ACTION_POINT">3</configuration>
+	<configuration name="SELLING_VALUE_RATE">0.3</configuration>
+	<configuration name="CONSTITUTION_PARA">5</configuration>
+	<configuration name="STRENGTH_PARA">1</configuration>
+	<configuration name="MANA_PARA">1</configuration>
+	<configuration name="DEFENCE_PARA">1</configuration>
+	<configuration name="RESISTENCE_PARA">1</configuration>
+</configurations>

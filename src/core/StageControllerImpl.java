@@ -8,8 +8,10 @@ import VO.RewardVO;
 import VO.ShopVO;
 import VO.StageVO;
 import controller.StageController;
+import model.EnemyCharacter;
 import model.Equipment;
 import model.GameStage;
+import model.buff.State;
 import util.VOFactory;
 
 public class StageControllerImpl implements StageController {
@@ -102,18 +104,20 @@ public class StageControllerImpl implements StageController {
 	@Override
 	public StageVO nextStage() {
 		// TODO Auto-generated method stub
+		// 将基本属性恢复为进入场景时的数值
+		instance.player.notifyAllBuff(State.STATE_END);
+		instance.player.recoverBaseStatus();
 		StageVO stagtVO = null;
 		ArrayList<GameStage> list = instance.stageList;
 		int currentStageNum = instance.currentStage != null ? instance.currentStage.stageNum : 0;
 		for (GameStage stage : list) {
 			if (stage.stageNum == currentStageNum + 1) {
 				{
-					// unfinished
-					// 加载instance中的currentStage，并初始化其中的enemy
 					instance.currentStage = stage;
 					instance.player.lifeMax = Integer.parseInt(instance.baseConfigurationMap.get("CONSTITUTION_PARA"))
 							* instance.player.constitution;
 					instance.player.lifeRemain = instance.player.lifeMax;
+					instance.player.restoreBaseStatus();
 					instance.enemyMap = stage.getEnemy();
 				}
 			}
@@ -132,6 +136,10 @@ public class StageControllerImpl implements StageController {
 		} else {
 			instance.isPlayerRound = true;
 			instance.player.actionPointRemain = instance.player.actionPointMax;
+			for (String key : instance.enemyMap.keySet()) {
+				instance.enemyMap.get(key).notifyAllBuff(State.ROUND_END);
+			}
+			instance.player.notifyAllBuff(State.ROUND_END);
 			return true;
 		}
 	}

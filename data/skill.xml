@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+	<skill name="" user_name="" min_level="" max_level="" desc="" target_type="">
+		<skill_para>
+			<front></front>
+		</skill_para>
+		<buffs>
+			<buff name="" desc="">
+				<para name=""><para>
+			</buff>
+		</buffs>
+	</skill>
+
+-->
+
+<skills>
+	<skill name="打击" user_name="ALL" min_level="1" max_level="2" desc="" target_type="single_enemy">
+		<action_point_cost>1,1</action_point_cost>
+		<skill_para>
+		</skill_para>
+		<buffs>
+			<buff name="Damage_normal" desc="">
+				<para name="times">1,1</para>
+				<para name="base_damage">6,9</para>
+			</buff>
+		</buffs>
+	</skill>
+	
+	<skill name="重击" user_name="战士" min_level="1" max_level="2" desc="" target_type="single_enemy">
+		<action_point_cost>2,2</action_point_cost>
+		<skill_para>
+			<para name="front">打击</para>
+		</skill_para>
+		<buffs>
+			<buff name="Damage_normal" desc="">
+				<para name="times">1,1</para>
+				<para name="base_damage">8,10</para>
+			</buff>
+			<buff name="Vulnurable" desc="">
+				<para name="round">2,3</para>
+			</buff>
+		</buffs>
+	</skill>
+	
+	<skill name="多重打击" user_name="战士" min_level="1" max_level="5" desc="" target_type="single_enemy">
+		<action_point_cost>2,2,2,2,2</action_point_cost>
+		<skill_para>
+			<para name="front">重击</para>
+		</skill_para>
+		<buffs>
+			<buff name="Damage_normal" desc="">
+				<para name="times">2,3,4,5,6</para>
+				<para name="base_damage">4,4,4,4,4</para>
+			</buff>
+		</buffs>
+	</skill>
+
+	<skill name="中和" user_name="盗贼" min_level="1" max_level="2" desc="" target_type="single_enemy">
+		<action_point_cost>0,0</action_point_cost>
+		<skill_para>
+		</skill_para>
+		<buffs>
+			<buff name="Damage_normal" desc="">
+				<para name="times">1,1</para>
+				<para name="base_damage">2,3</para>
+			</buff>
+		</buffs>
+	</skill>
+	
+	<skill name="攻击" user_name="enemy" min_level="1" max_level="3" desc="" target_type="single_enemy">
+		<action_point_cost>0,0,0</action_point_cost>
+		<skill_para>
+		</skill_para>
+		<buffs>
+			<buff name="Damage_normal" desc="">
+				<para name="times">1,1,1</para>
+				<para name="base_damage">5,9,15</para>
+			</buff>
+		</buffs>
+	</skill>
+</skills>
