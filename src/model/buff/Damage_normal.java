@@ -28,6 +28,7 @@ public class Damage_normal extends Buff {
 			int damage = (this.caster.strength + Integer.parseInt(this.hashMap.get("base_damage")) - target.defence)
 					* Integer.parseInt(this.hashMap.get("times"));
 			target.lifeRemain -= damage;
+			System.out.println(target.name + "受到" + damage + "点物理伤害！");
 			target.notifyAllBuff(State.HURT);
 		}
 	}

@@ -56,13 +56,13 @@ public class EnemyControllerImpl implements EnemyController {
 				if (chosenSkill.targetType.equals("self")) {
 					targetList.add(en);
 					flag = false;
-				} else if (chosenSkill.skillName.equals("single_enemy")) {
+				} else if (chosenSkill.targetType.equals("single_enemy")) {
 					targetList.add(instance.player);
-				} else if (chosenSkill.skillName.equals("all_enemies")) {
+				} else if (chosenSkill.targetType.equals("all_enemies")) {
 					{
 						// unfinished
 					}
-				} else if (chosenSkill.skillName.equals("random_enemies")) {
+				} else if (chosenSkill.targetType.equals("random_enemies")) {
 					{
 						// unfinished
 					}
@@ -70,10 +70,9 @@ public class EnemyControllerImpl implements EnemyController {
 					return "nothing happens";
 				}
 				// 使用技能效果
-				for (int i = 0; i < chosenSkill.buffList.size(); i++) {
-					chosenSkill.beUsed(en,targetList);
-				}
-				return en.name + "使用" + chosenSkill + "技能！";
+				System.out.println(en.name + "使用" + chosenSkill.skillName + "技能！");
+				chosenSkill.beUsed(en, targetList);
+				return en.name + "使用" + chosenSkill.skillName + "技能！";
 			}
 			break;
 		}
@@ -88,6 +87,7 @@ public class EnemyControllerImpl implements EnemyController {
 				if (instance.enemyMap.get(key).lifeRemain > 0) {
 					return false;
 				} else {
+					System.out.println(instance.enemyMap.get(key).name + "死了！");
 					return true;
 				}
 			}

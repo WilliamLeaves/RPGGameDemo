@@ -42,21 +42,21 @@ public class PlayerControllerImpl implements PlayerController {
 		if (chosenSkill.targetType.equals("self")) {
 			targetList.add(instance.player);
 			flag = false;
-		} else if (chosenSkill.skillName.equals("single_enemy")) {
+		} else if (chosenSkill.targetType.equals("single_enemy")) {
 			for (String na : targetname) {
-				EnemyCharacter enemy = enemyMap.get("na");
+				EnemyCharacter enemy = enemyMap.get(na);
 				if (enemy != null) {
 					targetList.add(enemy);
 					flag = false;
 					break;
 				}
 			}
-		} else if (chosenSkill.skillName.equals("all_enemies")) {
+		} else if (chosenSkill.targetType.equals("all_enemies")) {
 			for (EnemyCharacter enemy : enemyMap.values()) {
 				targetList.add(enemy);
 			}
 			flag = false;
-		} else if (chosenSkill.skillName.equals("random_enemies")) {
+		} else if (chosenSkill.targetType.equals("random_enemies")) {
 			{
 				// unfinished
 			}
@@ -70,9 +70,8 @@ public class PlayerControllerImpl implements PlayerController {
 
 		// 使用技能效果
 		this.instance.player.actionPointRemain -= chosenSkill.actionPointCost;
-		for (int i = 0; i < chosenSkill.buffList.size(); i++) {
-			chosenSkill.beUsed(instance.player, targetList);
-		}
+		System.out.println(instance.player.name + "使用" + chosenSkill.skillName + "技能！");
+		chosenSkill.beUsed(instance.player, targetList);
 		return true;
 	}
 
@@ -89,6 +88,9 @@ public class PlayerControllerImpl implements PlayerController {
 	@Override
 	public boolean isDead() {
 		// TODO Auto-generated method stub
+		if (!(instance.player.lifeRemain > 0)) {
+			System.out.println(instance.player.name + "死了！");
+		}
 		return instance.player.lifeRemain > 0 ? false : true;
 	}
 
@@ -246,7 +248,7 @@ public class PlayerControllerImpl implements PlayerController {
 		Skill skillLearning = null;
 		// 判断是否存在这个技能
 		for (Skill skill : allList) {
-			if (skill.userName.equals(instance.player.name)) {
+			if (skill.userName.equals(instance.player.name) || skill.userName.equals("ALL")) {
 				if (skill.skillName.equals(skillName)) {
 					skillLearning = skill;
 					break;
@@ -291,7 +293,8 @@ public class PlayerControllerImpl implements PlayerController {
 				// 移除旧的技能,增加升级过的技能
 				instance.player.skillList.remove(learned);
 				for (Skill levelUpSkill : instance.skillList) {
-					if (levelUpSkill.skillName.equals(skillName) && levelUpSkill.level == learned + 1) {
+					if (levelUpSkill.skillName.equals(skillName)
+							&& levelUpSkill.level == instance.player.skillList.get(learned).level + 1) {
 						instance.player.skillList.add(levelUpSkill.clone());
 					}
 				}

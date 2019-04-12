@@ -24,7 +24,7 @@ public class StageControllerImpl implements StageController {
 		// TODO Auto-generated method stub
 		ArrayList<EnemyVO> res = new ArrayList<EnemyVO>();
 		for (String key : instance.enemyMap.keySet()) {
-			if (instance.enemyMap.get(key).lifeRemain > 0) {
+			if (instance.enemyMap.get(key) != null) {
 				EnemyVO enemyVO = null;
 				{
 					enemyVO = VOFactory.getEnemyVO(instance.enemyMap.get(key));
@@ -44,6 +44,9 @@ public class StageControllerImpl implements StageController {
 				isClear = false;
 				break;
 			}
+		}
+		if(isClear) {
+			System.out.println("Õ½¶·½áÊø£¡");
 		}
 		return isClear;
 	}
@@ -117,8 +120,14 @@ public class StageControllerImpl implements StageController {
 					instance.player.lifeMax = Integer.parseInt(instance.baseConfigurationMap.get("CONSTITUTION_PARA"))
 							* instance.player.constitution;
 					instance.player.lifeRemain = instance.player.lifeMax;
+					instance.player.actionPointRemain = instance.player.actionPointMax;
 					instance.player.restoreBaseStatus();
 					instance.enemyMap = stage.getEnemy();
+					for (EnemyCharacter en : instance.enemyMap.values()) {
+						en.lifeMax = Integer.parseInt(instance.baseConfigurationMap.get("CONSTITUTION_PARA"))
+								* en.constitution;
+						en.lifeRemain = en.lifeMax;
+					}
 				}
 			}
 		}

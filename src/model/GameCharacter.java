@@ -46,7 +46,7 @@ public abstract class GameCharacter {
 		initBaseStatus.put("Strength", this.strength);
 		initBaseStatus.put("Mana", this.mana);
 		initBaseStatus.put("Defence", this.defence);
-		initBaseStatus.put("Consitution", this.constitution);
+		initBaseStatus.put("Constitution", this.constitution);
 		initBaseStatus.put("Resistence", this.resistence);
 	}
 
@@ -54,7 +54,7 @@ public abstract class GameCharacter {
 		this.strength = this.initBaseStatus.get("Strength");
 		this.mana = this.initBaseStatus.get("Mana");
 		this.defence = this.initBaseStatus.get("Defence");
-		this.constitution = this.initBaseStatus.get("Consitution");
+		this.constitution = this.initBaseStatus.get("Constitution");
 		this.resistence = this.initBaseStatus.get("Resistence");
 	}
 }

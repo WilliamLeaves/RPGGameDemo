@@ -15,6 +15,7 @@ import model.EnemyCharacter;
 import model.Equipment;
 import model.PlayerCharacter;
 import model.Skill;
+import model.buff.Buff;
 
 public class CharacterLoader extends DataLoader {
 
@@ -75,6 +76,15 @@ public class CharacterLoader extends DataLoader {
 						}
 					}
 				}
+				character.buffList = new ArrayList<Buff>();
+				character.initBaseStatus = new HashMap<String, Integer>();
+				{
+					character.initBaseStatus.put("Strength", character.strength);
+					character.initBaseStatus.put("Mana", character.mana);
+					character.initBaseStatus.put("Defence", character.defence);
+					character.initBaseStatus.put("Resistence", character.resistence);
+					character.initBaseStatus.put("Constitution", character.constitution);
+				}
 				instance.playerList.add(character);
 			} else if (child.elementText("type").equals("enemy")) {
 				// 批量添加敌人
@@ -100,6 +110,7 @@ public class CharacterLoader extends DataLoader {
 							}
 						}
 					}
+					character.buffList = new ArrayList<Buff>();
 					instance.enemyList.add(character);
 				}
 

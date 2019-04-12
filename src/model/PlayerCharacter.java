@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.buff.Buff;
-import model.buff.State;
 
 public class PlayerCharacter extends GameCharacter {
 	public int actionPointRemain;
@@ -87,18 +86,13 @@ public class PlayerCharacter extends GameCharacter {
 		if (sum > this.statusIncreasePointRemain) {
 			return false;
 		} else {
-			this.initBaseStatus.replace("Strength",
-					this.initBaseStatus.get("Strength") + strength_inc);
-			this.initBaseStatus.replace("Constitution",
-					this.initBaseStatus.get("Constitution") + constitution_inc);
-			this.initBaseStatus.replace("Mana",
-					this.initBaseStatus.get("Mana") + mana_inc);
-			this.initBaseStatus.replace("Defence",
-					this.initBaseStatus.get("Defence") + defence_inc);
-			this.initBaseStatus.replace("Resistence",
-					this.initBaseStatus.get("Resistence") +resistence_inc);
+			this.initBaseStatus.replace("Strength", this.initBaseStatus.get("Strength") + strength_inc);
+			this.initBaseStatus.replace("Constitution", this.initBaseStatus.get("Constitution") + constitution_inc);
+			this.initBaseStatus.replace("Mana", this.initBaseStatus.get("Mana") + mana_inc);
+			this.initBaseStatus.replace("Defence", this.initBaseStatus.get("Defence") + defence_inc);
+			this.initBaseStatus.replace("Resistence", this.initBaseStatus.get("Resistence") + resistence_inc);
 		}
-		return false;
+		return true;
 	}
 
 	public PlayerCharacter clone() {
@@ -129,6 +123,12 @@ public class PlayerCharacter extends GameCharacter {
 		for (Equipment eq : this.bag) {
 			clonePlayer.bag.add(eq.clone());
 		}
+		clonePlayer.buffList = new ArrayList<Buff>();
+		// for (Buff bu : this.buffList) {
+		// clonePlayer.buffList.add(bu);
+		// }
+		clonePlayer.initBaseStatus = new HashMap<String, Integer>();
+		clonePlayer.initBaseStatus.putAll(initBaseStatus);
 		return clonePlayer;
 	}
 

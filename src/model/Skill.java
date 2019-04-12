@@ -22,7 +22,7 @@ public class Skill {
 		// 初始化生成bufflist
 		ArrayList<Buff> concreteBuffList = new ArrayList<Buff>();
 		for (int i = 0; i < buffList.size(); i++) {
-			BuffFactory.createBuff(buffList.get(i), buffParameterMap.get(i));
+			concreteBuffList.add(BuffFactory.createBuff(buffList.get(i), buffParameterMap.get(i)));
 		}
 
 		// 调用各个buff的beAdded方法
@@ -30,8 +30,7 @@ public class Skill {
 			buff.beAdded(caster, targetList);
 		}
 		// 通知caster使用了技能
-		
-		
+
 		// 通知target获得了buff
 	}
 

@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import model.buff.Buff;
 import model.buff.State;
 
 public class EnemyCharacter extends GameCharacter {
@@ -28,7 +29,7 @@ public class EnemyCharacter extends GameCharacter {
 		clone.mana = this.mana;
 		clone.defence = this.defence;
 		clone.resistence = this.resistence;
-
+		clone.buffList = new ArrayList<Buff>();
 		clone.skillList = new ArrayList<Skill>();
 		for (Skill sk : this.skillList) {
 			clone.skillList.add(sk.clone());
@@ -39,7 +40,7 @@ public class EnemyCharacter extends GameCharacter {
 	@Override
 	public void notifyAllBuff(State state) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

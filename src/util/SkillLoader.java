@@ -40,6 +40,7 @@ public class SkillLoader extends DataLoader {
 				for (Element el : child.element("skill_para").elements()) {
 					skill.skillParameter.put(el.attributeValue("name"), el.getText());
 				}
+				skill.skillParameter.put("max_level", child.attributeValue("max_level"));
 				skill.buffList = new ArrayList<String>();
 				skill.buffParameterMap = new ArrayList<HashMap<String, String>>();
 				for (Element el : child.element("buffs").elements()) {
@@ -51,7 +52,7 @@ public class SkillLoader extends DataLoader {
 					skill.buffParameterMap.add(map);
 				}
 				instance.skillList.add(skill);
-				//System.out.println(skill.skillName + skill.level + " loaded");
+				// System.out.println(skill.skillName + skill.level + " loaded");
 			}
 		}
 		return true;

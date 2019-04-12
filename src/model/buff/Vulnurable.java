@@ -15,6 +15,7 @@ public class Vulnurable extends Buff {
 		for (GameCharacter target : targetList) {
 			target.defence = (int) (target.defence * 0.75);
 			target.addBuff(this);
+			System.out.println(target.name + "获得" + this.round + "层易伤效果！");
 		}
 	}
 

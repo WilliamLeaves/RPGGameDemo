@@ -67,7 +67,7 @@ public class DataManager {
 			dataLoader.load();
 			this.dataLoader = new StageLoader();
 			dataLoader.load();
-			System.out.println("pause");
+			//System.out.println("pause");
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
