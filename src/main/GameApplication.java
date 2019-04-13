@@ -29,6 +29,7 @@ public class GameApplication {
 		this.gameClient.gameStart();
 		ArrayList<PlayerVO> plyaerList = this.gameClient.getAvailablePlayer();
 		this.gameClient.choosePlayer("սʿ");
+		PlayerVO playerVO = this.gameClient.getPlayer();
 		// System.out.println();
 		this.stageController.nextStage();
 		ArrayList<EnemyVO> enemyList = this.stageController.getEnemies();
