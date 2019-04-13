@@ -312,4 +312,16 @@ public class PlayerControllerImpl implements PlayerController {
 		}
 	}
 
+	@Override
+	public ArrayList<SkillVO> getAllSkillofPlayer(String playerName) {
+		// TODO Auto-generated method stub
+		ArrayList<SkillVO> res = new ArrayList<SkillVO>();
+		for (Skill skill : this.instance.skillList) {
+			if (skill.userName.equals(playerName) || skill.userName.equals("ALL")) {
+				res.add(VOFactory.getSkillVO(skill));
+			}
+		}
+		return res;
+	}
+
 }

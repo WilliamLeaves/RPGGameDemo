@@ -23,7 +23,7 @@ public interface PlayerController {
 	// 获取已经拥有的技能列表
 	public ArrayList<SkillVO> getSkillList();
 
-	// 获取所有属于该角色的技能列表
+	// 获取所有目前可以学习的技能列表
 	public ArrayList<SkillVO> getAllAvailableList(String playerName);
 
 	// 使用装备
@@ -40,4 +40,6 @@ public interface PlayerController {
 
 	// 学技能
 	public boolean learnSkill(String skillName);
+
+	public ArrayList<SkillVO> getAllSkillofPlayer(String playerName);
 }
