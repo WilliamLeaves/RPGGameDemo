@@ -31,7 +31,8 @@ public class GameApplication {
 		this.gameClient.choosePlayer("战士");
 		PlayerVO playerVO = this.gameClient.getPlayer();
 		this.playerController.unwearEquipment("生锈的刀");
-		this.playerController.waerEqiupment("生锈的刀");
+		playerVO = this.gameClient.getPlayer();
+		//this.playerController.waerEqiupment("生锈的刀");
 		// System.out.println();
 		this.stageController.nextStage();
 		ArrayList<EnemyVO> enemyList = this.stageController.getEnemies();
