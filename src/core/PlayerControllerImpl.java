@@ -145,7 +145,7 @@ public class PlayerControllerImpl implements PlayerController {
 				continue;
 			}
 			for (Skill skill2 : learnedList) {
-				if (skill2.skillName.equals(skill.skillParameter.get("front_skill"))) {
+				if (skill2.skillName.equals(skill.skillParameter.get("front")) && skill.level == 1) {
 					SkillVO skillVO = VOFactory.getSkillVO(skill);
 					res.add(skillVO);
 					break;
@@ -289,20 +289,26 @@ public class PlayerControllerImpl implements PlayerController {
 		if (flag == false) {
 			return false;
 		} else {
-			if (learned != -1) {
-				// 移除旧的技能,增加升级过的技能
-				instance.player.skillList.remove(learned);
-				for (Skill levelUpSkill : instance.skillList) {
-					if (levelUpSkill.skillName.equals(skillName)
-							&& levelUpSkill.level == instance.player.skillList.get(learned).level + 1) {
-						instance.player.skillList.add(levelUpSkill.clone());
+			if (instance.player.skillIncreasePointRemain > 0) {
+				if (learned != -1) {
+					// 移除旧的技能,增加升级过的技能
+					for (Skill levelUpSkill : instance.skillList) {
+						if (levelUpSkill.skillName.equals(skillName)
+								&& levelUpSkill.level == instance.player.skillList.get(learned).level + 1) {
+							instance.player.skillList.add(levelUpSkill.clone());
+						}
 					}
+					instance.player.skillList.remove(learned);
+				} else {
+					// 加入新的技能
+					instance.player.skillList.add(skillLearning.clone());
 				}
+				instance.player.skillIncreasePointRemain--;
+				return true;
 			} else {
-				// 加入新的技能
-				instance.player.skillList.add(skillLearning.clone());
+				return false;
 			}
-			return true;
+
 		}
 	}
 

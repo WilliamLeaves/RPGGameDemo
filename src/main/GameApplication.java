@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import VO.EnemyVO;
 import VO.PlayerVO;
+import VO.SkillVO;
 import controller.EnemyController;
 import controller.GameClientCtroller;
 import controller.PlayerController;
@@ -32,7 +33,7 @@ public class GameApplication {
 		PlayerVO playerVO = this.gameClient.getPlayer();
 		this.playerController.unwearEquipment("生锈的刀");
 		playerVO = this.gameClient.getPlayer();
-		//this.playerController.waerEqiupment("生锈的刀");
+		// this.playerController.waerEqiupment("生锈的刀");
 		// System.out.println();
 		this.stageController.nextStage();
 		ArrayList<EnemyVO> enemyList = this.stageController.getEnemies();
@@ -84,7 +85,8 @@ public class GameApplication {
 		map.put("Resistence", 0);
 		this.playerController.increaseStatus(map);
 
-		this.playerController.learnSkill("打击");
+		this.playerController.learnSkill("重击");
+		ArrayList<SkillVO> sl = this.playerController.getAllAvailableList("战士");
 
 		this.stageController.nextStage();
 
