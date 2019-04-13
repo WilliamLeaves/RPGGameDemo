@@ -7,4 +7,11 @@
 	<configuration name="MANA_PARA">1</configuration>
 	<configuration name="DEFENCE_PARA">1</configuration>
 	<configuration name="RESISTENCE_PARA">1</configuration>
+	<configuration name="weapon_MAX_NUM">1</configuration>
+	<configuration name="head_MAX_NUM">1</configuration>
+	<configuration name="ring_MAX_NUM">2</configuration>
+	<configuration name="armour_MAX_NUM">1</configuration>
+	<configuration name="sheild_MAX_NUM">1</configuration>
+	<configuration name="chain_MAX_NUM">1</configuration>
+	<configuration name="armguard_MAX_NUM">1</configuration>
 </configurations>
