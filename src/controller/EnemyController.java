@@ -15,4 +15,7 @@ public interface EnemyController {
 	// 判断敌人是否已经死亡
 	public boolean isDead(String enemyName);
 
+	//使一名敌人的所有生命值回复满
+	public boolean setFullHealth(String enemyName);
+
 }

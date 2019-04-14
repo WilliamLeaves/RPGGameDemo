@@ -95,4 +95,16 @@ public class EnemyControllerImpl implements EnemyController {
 		return true;
 	}
 
+	@Override
+	public boolean setFullHealth(String enemyName) {
+		// TODO Auto-generated method stub
+		for (String name : this.instance.enemyMap.keySet()) {
+			if (name.equals(enemyName)) {
+				this.instance.enemyMap.get(name).lifeRemain = this.instance.enemyMap.get(name).lifeMax;
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

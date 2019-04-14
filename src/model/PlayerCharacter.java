@@ -92,6 +92,11 @@ public class PlayerCharacter extends GameCharacter {
 			this.initBaseStatus.replace("Mana", this.initBaseStatus.get("Mana") + mana_inc);
 			this.initBaseStatus.replace("Defence", this.initBaseStatus.get("Defence") + defence_inc);
 			this.initBaseStatus.replace("Resistence", this.initBaseStatus.get("Resistence") + resistence_inc);
+			this.strength += strength_inc;
+			this.constitution += constitution_inc;
+			this.mana += mana_inc;
+			this.resistence += resistence_inc;
+			this.defence += defence_inc;
 			this.statusIncreasePointRemain -= sum;
 		}
 		return true;

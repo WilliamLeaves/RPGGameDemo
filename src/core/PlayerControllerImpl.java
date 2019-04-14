@@ -329,4 +329,11 @@ public class PlayerControllerImpl implements PlayerController {
 		return res;
 	}
 
+	@Override
+	public boolean setFullHealth() {
+		// TODO Auto-generated method stub
+		this.instance.player.lifeRemain = this.instance.player.lifeMax;
+		return true;
+	}
+
 }

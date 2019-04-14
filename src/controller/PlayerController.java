@@ -42,4 +42,6 @@ public interface PlayerController {
 	public boolean learnSkill(String skillName);
 
 	public ArrayList<SkillVO> getAllSkillofPlayer(String playerName);
+
+	public boolean setFullHealth();
 }
