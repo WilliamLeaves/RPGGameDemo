@@ -36,6 +36,11 @@ public class PlayerControllerImpl implements PlayerController {
 		}
 		flag = true;
 
+		// 保证剩余行动点足够
+		if (chosenSkill.actionPointCost > this.instance.player.actionPointRemain) {
+			return false;
+		}
+
 		// 确定技能释放目标
 		HashMap<String, EnemyCharacter> enemyMap = instance.enemyMap;
 		ArrayList<GameCharacter> targetList = new ArrayList<GameCharacter>();

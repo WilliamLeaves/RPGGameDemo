@@ -48,11 +48,11 @@ public class PlayerCharacter extends GameCharacter {
 				this.initBaseStatus.get("Defence") + Integer.parseInt(increaseList.get("Defence")));
 		this.initBaseStatus.replace("Resistence",
 				this.initBaseStatus.get("Resistence") + Integer.parseInt(increaseList.get("Resistence")));
-		 this.strength += Integer.parseInt(increaseList.get("Strength"));
-		 this.constitution += Integer.parseInt(increaseList.get("Constitution"));
-		 this.mana += Integer.parseInt(increaseList.get("Mana"));
-		 this.defence += Integer.parseInt(increaseList.get("Defence"));
-		 this.resistence += Integer.parseInt(increaseList.get("Resistence"));
+		this.strength += Integer.parseInt(increaseList.get("Strength"));
+		this.constitution += Integer.parseInt(increaseList.get("Constitution"));
+		this.mana += Integer.parseInt(increaseList.get("Mana"));
+		this.defence += Integer.parseInt(increaseList.get("Defence"));
+		this.resistence += Integer.parseInt(increaseList.get("Resistence"));
 	}
 
 	public void equipmentDecrease(HashMap<String, String> increaseList) {
@@ -67,11 +67,11 @@ public class PlayerCharacter extends GameCharacter {
 				this.initBaseStatus.get("Defence") - Integer.parseInt(increaseList.get("Defence")));
 		this.initBaseStatus.replace("Resistence",
 				this.initBaseStatus.get("Resistence") - Integer.parseInt(increaseList.get("Resistence")));
-		 this.strength -= Integer.parseInt(increaseList.get("Strength"));
-		 this.constitution -= Integer.parseInt(increaseList.get("Constitution"));
-		 this.mana -= Integer.parseInt(increaseList.get("Mana"));
-		 this.defence -= Integer.parseInt(increaseList.get("Defence"));
-		 this.resistence -= Integer.parseInt(increaseList.get("Resistence"));
+		this.strength -= Integer.parseInt(increaseList.get("Strength"));
+		this.constitution -= Integer.parseInt(increaseList.get("Constitution"));
+		this.mana -= Integer.parseInt(increaseList.get("Mana"));
+		this.defence -= Integer.parseInt(increaseList.get("Defence"));
+		this.resistence -= Integer.parseInt(increaseList.get("Resistence"));
 
 	}
 
@@ -92,6 +92,7 @@ public class PlayerCharacter extends GameCharacter {
 			this.initBaseStatus.replace("Mana", this.initBaseStatus.get("Mana") + mana_inc);
 			this.initBaseStatus.replace("Defence", this.initBaseStatus.get("Defence") + defence_inc);
 			this.initBaseStatus.replace("Resistence", this.initBaseStatus.get("Resistence") + resistence_inc);
+			this.statusIncreasePointRemain -= sum;
 		}
 		return true;
 	}

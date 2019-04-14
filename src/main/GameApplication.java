@@ -86,7 +86,7 @@ public class GameApplication {
 		this.playerController.increaseStatus(map);
 
 		this.playerController.learnSkill("ÖØ»÷");
-		ArrayList<SkillVO> sl = this.playerController.getAllAvailableList("Õ½Ê¿");
+		ArrayList<SkillVO> sl = this.playerController.getSkillList();
 
 		this.stageController.nextStage();
 
